@@ -12,7 +12,7 @@ This whole package is ridiculous overkill and was build purely for fun. Going th
 
 ## CharSource
 
-A [CharSource](source/source.go) is what translates the [RangeTable](https://golang.org/pkg/unicode/#RangeTable)s into runes. A RangeTable defines how to walk the set of valid codepoints, which you can imagine doing two ways: One could walk them as soon as you get them, storing all of the runes encountered in a slice. Alternatively, you could navigate to the nth codepoint on-demand. The first method is faster once constructed, but can use a lot of memory. The second method has a faster start-up time, but uses no additional memory. These two methods are implemented as [CharSourceFlat](source/flatsource/flat.go) and [CharSourceRanged](source/rangedsource/ranged.go).
+A [CharSource](source/source.go) is what translates the [RangeTable](https://golang.org/pkg/unicode/#RangeTable)s into runes. A RangeTable defines how to walk the set of valid codepoints, which you can imagine doing two ways: One could walk them as soon as you get them, storing all of the runes encountered in a slice. Alternatively, you could navigate to the nth codepoint on-demand. The first method is faster once constructed, but can use a lot of memory. The second method has a faster start-up time, but uses no additional memory. These two methods are implemented as [CharSourceFlat](flatsource/flat.go) and [CharSourceRanged](rangedsource/ranged.go).
 
 As expected, the flat source has a longer creation time in all but the smallest of cases and uses a lot more memory:
 
