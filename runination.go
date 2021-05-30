@@ -45,9 +45,9 @@ func New(charSource source.CharSource) *RandomGenerator {
 	}
 }
 
-// NewString generates a string of chars from the allowed set of length between
+// String generates a string of chars from the allowed set of length between
 // min and max, inclusive
-func (rg *RandomGenerator) NewString(min, max int) string {
+func (rg *RandomGenerator) String(min, max int) string {
 	strlen := min
 	if min < max {
 		strlen += rand.Intn(1 + max - min)

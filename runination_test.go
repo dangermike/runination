@@ -52,7 +52,7 @@ func TestSimple(t *testing.T) {
 				lengths := map[int]int{}
 				last := ""
 				for i := 0; i < 1000; i++ {
-					s := test.randomGenerator.NewString(test.min, test.max)
+					s := test.randomGenerator.String(test.min, test.max)
 					require.NotEqual(t, last, s)
 					lengths[utf8.RuneCountInString(s)] += 1
 					last = s
@@ -79,14 +79,14 @@ func BenchmarkRandomString(b *testing.B) {
 				min  int
 				max  int
 			}{
-				{"flat", runination.NewFlat(dataset.Tables).NewString, 10, 10},
-				{"ranged", runination.NewRanged(dataset.Tables).NewString, 10, 10},
-				{"flat", runination.NewFlat(dataset.Tables).NewString, 10, 15},
-				{"ranged", runination.NewRanged(dataset.Tables).NewString, 10, 15},
-				{"flat", runination.NewFlat(dataset.Tables).NewString, 50, 100},
-				{"ranged", runination.NewRanged(dataset.Tables).NewString, 50, 100},
-				{"flat", runination.NewFlat(dataset.Tables).NewString, 512, 512},
-				{"ranged", runination.NewRanged(dataset.Tables).NewString, 512, 512},
+				{"flat", runination.NewFlat(dataset.Tables).String, 10, 10},
+				{"ranged", runination.NewRanged(dataset.Tables).String, 10, 10},
+				{"flat", runination.NewFlat(dataset.Tables).String, 10, 15},
+				{"ranged", runination.NewRanged(dataset.Tables).String, 10, 15},
+				{"flat", runination.NewFlat(dataset.Tables).String, 50, 100},
+				{"ranged", runination.NewRanged(dataset.Tables).String, 50, 100},
+				{"flat", runination.NewFlat(dataset.Tables).String, 512, 512},
+				{"ranged", runination.NewRanged(dataset.Tables).String, 512, 512},
 			} {
 				b.Run(test.name+fmt.Sprintf(" %d-%d", test.min, test.max), func(b *testing.B) {
 					for i := 0; i < b.N; i++ {
